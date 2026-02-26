@@ -1,6 +1,6 @@
 {
   "name": "ms-tiny",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Parse and format time durations in milliseconds. Like ms, but with TypeScript, ESM + CJS, and compound durations.",
   "type": "module",
   "exports": {
@@ -71,11 +71,13 @@
     "format",
     "convert",
     "ms-tiny",
+    "compound-duration",
+    "commonjs",
+    "dual-package",
     "typescript",
     "esm",
-    "zero-dependency",
-    "drop-in-replacement",
-    "vercel-ms"
+    "cjs",
+    "zero-dependency"
   ],
   "author": "Ofer Shapira <ofer@ofershap.dev>",
   "license": "MIT",
