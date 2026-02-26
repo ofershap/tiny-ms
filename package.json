@@ -1,6 +1,6 @@
 {
   "name": "ms-tiny",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Parse and format time durations in milliseconds. Like ms, but with TypeScript, ESM + CJS, and compound durations.",
   "type": "module",
   "exports": {
@@ -22,7 +22,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node -e \"let f=require('fs'),p='dist/index.cjs',c=f.readFileSync(p,'utf8');c+='\\nmodule.exports=Object.assign(exports.default,exports);delete module.exports.default;';f.writeFileSync(p,c)\"",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",

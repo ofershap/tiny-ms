@@ -130,3 +130,15 @@ function plural(ms: number, unit: number, name: string): string {
   const n = Math.round(ms / unit);
   return `${n} ${name}${Math.abs(n) !== 1 ? "s" : ""}`;
 }
+
+export function ms(value: string, options?: FormatOptions): number;
+export function ms(value: number, options?: FormatOptions): string;
+export function ms(
+  value: string | number,
+  options?: FormatOptions,
+): number | string {
+  if (typeof value === "string") return parse(value);
+  return format(value, options);
+}
+
+export default ms;
