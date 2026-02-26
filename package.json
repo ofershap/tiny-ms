@@ -1,6 +1,6 @@
 {
   "name": "ms-tiny",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modern ms() replacement — parse and format time durations. TypeScript, ESM + CJS, zero deps, ~833B.",
   "type": "module",
   "exports": {
