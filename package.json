@@ -62,7 +62,21 @@
       ]
     ]
   },
-  "keywords": "[\"ms\",\"milliseconds\",\"time\",\"duration\",\"parse\",\"format\",\"convert\",\"tinyms\",\"typescript\",\"esm\",\"zero-dependency\"]",
+  "keywords": [
+    "ms",
+    "milliseconds",
+    "time",
+    "duration",
+    "parse",
+    "format",
+    "convert",
+    "ms-tiny",
+    "typescript",
+    "esm",
+    "zero-dependency",
+    "drop-in-replacement",
+    "vercel-ms"
+  ],
   "author": "Ofer Shapira <ofer@ofershap.dev>",
   "license": "MIT",
   "repository": {

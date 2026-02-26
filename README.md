@@ -8,21 +8,23 @@
 [![Bundle size](https://img.shields.io/badge/gzip-833_B-brightgreen)](https://github.com/ofershap/tiny-ms)
 [![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://github.com/ofershap/tiny-ms)
 
-Parse and format time durations in milliseconds. A modern, type-safe drop-in replacement for [`ms`](https://github.com/vercel/ms).
+Drop-in replacement for [`ms`](https://github.com/vercel/ms) with native TypeScript, ESM + CJS, compound durations, and strict error handling.
 
 ```ts
 import { parse, format } from "ms-tiny";
 
 parse("2h"); // 7_200_000
-parse("1d 3h 30m"); // 97_200_000 + 1_800_000
+parse("1d 3h 30m"); // 99_000_000
 format(3_600_000); // "1h"
 ```
 
-> Native TypeScript. ESM + CJS. Zero dependencies. Compound durations. Strict error handling.
+> Zero dependencies. 833 bytes gzipped. Parses `"1h 30m"` out of the box — something `ms` can't do.
+
+![Demo](assets/demo.gif)
 
 ## Why ms-tiny?
 
-[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but ships without native TypeScript types, has no ESM exports, returns `undefined` on invalid input, and can't parse compound durations like `"1h 30m"`. `ms-tiny` fixes all of that in 833 bytes gzipped.
+[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but hasn't kept up with the TypeScript-first, ESM ecosystem. It ships without native types, has no ESM exports, silently returns `undefined` on bad input, and can't handle compound durations like `"1h 30m"`.
 
 |               | `ms`                        | `ms-tiny`          |
 | ------------- | --------------------------- | ------------------ |
@@ -31,6 +33,7 @@ format(3_600_000); // "1h"
 | Invalid input | returns `undefined` / `NaN` | throws `TypeError` |
 | Compound      | no                          | `"1h 30m"` works   |
 | Size (gzip)   | ~950B                       | 833B               |
+| Dependencies  | 0                           | 0                  |
 
 ## Install
 
@@ -80,7 +83,7 @@ format(Infinity); // throws TypeError
 
 ### `parse(value: string): number`
 
-Parses a duration string and returns milliseconds. Throws `TypeError` on invalid input.
+Parses a duration string and returns milliseconds. Supports single (`"2h"`) and compound (`"1h 30m"`) formats. Throws `TypeError` on invalid input.
 
 ### `format(ms: number, options?: { long?: boolean }): string`
 
@@ -97,6 +100,8 @@ Formats milliseconds to a human-readable string. Pass `{ long: true }` for verbo
 + const label = format(60000);      // string
 ```
 
+The API is intentionally split into `parse` and `format` for clarity — no overloaded function signatures.
+
 ## Author
 
 [![Made by ofershap](https://gitshow.dev/api/card/ofershap)](https://gitshow.dev/ofershap)
@@ -106,4 +111,4 @@ Formats milliseconds to a human-readable string. Pass `{ long: true }` for verbo
 
 ## License
 
-MIT
+[MIT](LICENSE) &copy; [Ofer Shapira](https://github.com/ofershap)
