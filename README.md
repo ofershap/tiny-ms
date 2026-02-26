@@ -1,7 +1,7 @@
-# tinyms
+# ms-tiny
 
-[![npm version](https://img.shields.io/npm/v/tinyms.svg)](https://www.npmjs.com/package/tinyms)
-[![npm downloads](https://img.shields.io/npm/dm/tinyms.svg)](https://www.npmjs.com/package/tinyms)
+[![npm version](https://img.shields.io/npm/v/ms-tiny.svg)](https://www.npmjs.com/package/ms-tiny)
+[![npm downloads](https://img.shields.io/npm/dm/ms-tiny.svg)](https://www.npmjs.com/package/ms-tiny)
 [![CI](https://github.com/ofershap/tiny-ms/actions/workflows/ci.yml/badge.svg)](https://github.com/ofershap/tiny-ms/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,7 +11,7 @@
 Parse and format time durations in milliseconds. A modern, type-safe drop-in replacement for [`ms`](https://github.com/vercel/ms).
 
 ```ts
-import { parse, format } from "tinyms";
+import { parse, format } from "ms-tiny";
 
 parse("2h"); // 7_200_000
 parse("1d 3h 30m"); // 97_200_000 + 1_800_000
@@ -20,11 +20,11 @@ format(3_600_000); // "1h"
 
 > Native TypeScript. ESM + CJS. Zero dependencies. Compound durations. Strict error handling.
 
-## Why tinyms?
+## Why ms-tiny?
 
-[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but ships without native TypeScript types, has no ESM exports, returns `undefined` on invalid input, and can't parse compound durations like `"1h 30m"`. `tinyms` fixes all of that in 833 bytes gzipped.
+[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but ships without native TypeScript types, has no ESM exports, returns `undefined` on invalid input, and can't parse compound durations like `"1h 30m"`. `ms-tiny` fixes all of that in 833 bytes gzipped.
 
-|               | `ms`                        | `tinyms`           |
+|               | `ms`                        | `ms-tiny`          |
 | ------------- | --------------------------- | ------------------ |
 | TypeScript    | needs `@types/ms`           | native             |
 | ESM           | no                          | ESM + CJS          |
@@ -35,7 +35,7 @@ format(3_600_000); // "1h"
 ## Install
 
 ```bash
-npm install tinyms
+npm install ms-tiny
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ npm install tinyms
 ### Parse strings to milliseconds
 
 ```ts
-import { parse } from "tinyms";
+import { parse } from "ms-tiny";
 
 parse("2h"); // 7_200_000
 parse("1.5s"); // 1_500
@@ -57,7 +57,7 @@ Supported units: `ms`, `s`/`sec`, `m`/`min`, `h`/`hr`, `d`/`day`, `w`/`week`, `m
 ### Format milliseconds to strings
 
 ```ts
-import { format } from "tinyms";
+import { format } from "ms-tiny";
 
 format(60_000); // "1m"
 format(3_600_000); // "1h"
@@ -92,7 +92,7 @@ Formats milliseconds to a human-readable string. Pass `{ long: true }` for verbo
 - import ms from "ms";
 - const timeout = ms("2h");        // number | undefined
 - const label = ms(60000);          // string
-+ import { parse, format } from "tinyms";
++ import { parse, format } from "ms-tiny";
 + const timeout = parse("2h");      // number (throws on invalid)
 + const label = format(60000);      // string
 ```
