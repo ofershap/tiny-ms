@@ -1,6 +1,6 @@
 {
   "name": "ms-tiny",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse and format time durations in milliseconds. Like ms, but with TypeScript, ESM + CJS, and compound durations.",
   "type": "module",
   "exports": {
