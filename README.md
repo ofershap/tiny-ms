@@ -1,7 +1,7 @@
-# tiny-ms
+# tinyms
 
-[![npm version](https://img.shields.io/npm/v/tiny-ms.svg)](https://www.npmjs.com/package/tiny-ms)
-[![npm downloads](https://img.shields.io/npm/dm/tiny-ms.svg)](https://www.npmjs.com/package/tiny-ms)
+[![npm version](https://img.shields.io/npm/v/tinyms.svg)](https://www.npmjs.com/package/tinyms)
+[![npm downloads](https://img.shields.io/npm/dm/tinyms.svg)](https://www.npmjs.com/package/tinyms)
 [![CI](https://github.com/ofershap/tiny-ms/actions/workflows/ci.yml/badge.svg)](https://github.com/ofershap/tiny-ms/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,31 +11,31 @@
 Parse and format time durations in milliseconds. A modern, type-safe drop-in replacement for [`ms`](https://github.com/vercel/ms).
 
 ```ts
-import { parse, format } from "tiny-ms";
+import { parse, format } from "tinyms";
 
-parse("2h");          // 7_200_000
-parse("1d 3h 30m");   // 97_200_000 + 1_800_000
-format(3_600_000);     // "1h"
+parse("2h"); // 7_200_000
+parse("1d 3h 30m"); // 97_200_000 + 1_800_000
+format(3_600_000); // "1h"
 ```
 
 > Native TypeScript. ESM + CJS. Zero dependencies. Compound durations. Strict error handling.
 
-## Why tiny-ms?
+## Why tinyms?
 
-[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but ships without native TypeScript types, has no ESM exports, returns `undefined` on invalid input, and can't parse compound durations like `"1h 30m"`. `tiny-ms` fixes all of that in 833 bytes gzipped.
+[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but ships without native TypeScript types, has no ESM exports, returns `undefined` on invalid input, and can't parse compound durations like `"1h 30m"`. `tinyms` fixes all of that in 833 bytes gzipped.
 
-| | `ms` | `tiny-ms` |
-|---|---|---|
-| TypeScript | needs `@types/ms` | native |
-| ESM | no | ESM + CJS |
+|               | `ms`                        | `tinyms`           |
+| ------------- | --------------------------- | ------------------ |
+| TypeScript    | needs `@types/ms`           | native             |
+| ESM           | no                          | ESM + CJS          |
 | Invalid input | returns `undefined` / `NaN` | throws `TypeError` |
-| Compound | no | `"1h 30m"` works |
-| Size (gzip) | ~950B | 833B |
+| Compound      | no                          | `"1h 30m"` works   |
+| Size (gzip)   | ~950B                       | 833B               |
 
 ## Install
 
 ```bash
-npm install tiny-ms
+npm install tinyms
 ```
 
 ## Usage
@@ -43,13 +43,13 @@ npm install tiny-ms
 ### Parse strings to milliseconds
 
 ```ts
-import { parse } from "tiny-ms";
+import { parse } from "tinyms";
 
-parse("2h");        // 7_200_000
-parse("1.5s");      // 1_500
-parse("100");       // 100 (bare number = ms)
-parse("1d 6h");     // 108_000_000
-parse("-3h");       // -10_800_000
+parse("2h"); // 7_200_000
+parse("1.5s"); // 1_500
+parse("100"); // 100 (bare number = ms)
+parse("1d 6h"); // 108_000_000
+parse("-3h"); // -10_800_000
 ```
 
 Supported units: `ms`, `s`/`sec`, `m`/`min`, `h`/`hr`, `d`/`day`, `w`/`week`, `mo`/`month`, `y`/`year` (and their plurals).
@@ -57,11 +57,11 @@ Supported units: `ms`, `s`/`sec`, `m`/`min`, `h`/`hr`, `d`/`day`, `w`/`week`, `m
 ### Format milliseconds to strings
 
 ```ts
-import { format } from "tiny-ms";
+import { format } from "tinyms";
 
-format(60_000);                      // "1m"
-format(3_600_000);                   // "1h"
-format(86_400_000, { long: true });  // "1 day"
+format(60_000); // "1m"
+format(3_600_000); // "1h"
+format(86_400_000, { long: true }); // "1 day"
 format(172_800_000, { long: true }); // "2 days"
 ```
 
@@ -70,10 +70,10 @@ format(172_800_000, { long: true }); // "2 days"
 Unlike `ms`, invalid input throws a `TypeError` instead of silently returning `undefined`:
 
 ```ts
-parse("");          // throws TypeError
-parse("hello");    // throws TypeError
-format(NaN);       // throws TypeError
-format(Infinity);  // throws TypeError
+parse(""); // throws TypeError
+parse("hello"); // throws TypeError
+format(NaN); // throws TypeError
+format(Infinity); // throws TypeError
 ```
 
 ## API
@@ -92,7 +92,7 @@ Formats milliseconds to a human-readable string. Pass `{ long: true }` for verbo
 - import ms from "ms";
 - const timeout = ms("2h");        // number | undefined
 - const label = ms(60000);          // string
-+ import { parse, format } from "tiny-ms";
++ import { parse, format } from "tinyms";
 + const timeout = parse("2h");      // number (throws on invalid)
 + const label = format(60000);      // string
 ```

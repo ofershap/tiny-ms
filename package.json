@@ -1,7 +1,7 @@
 {
-  "name": "tiny-ms",
+  "name": "tinyms",
   "version": "1.0.0",
-  "description": "Modern ms() replacement — parse and format time durations. TypeScript, ESM + CJS, zero dependencies, ~300B.",
+  "description": "Modern ms() replacement — parse and format time durations. TypeScript, ESM + CJS, zero deps, ~833B.",
   "type": "module",
   "exports": {
     ".": {
@@ -18,7 +18,9 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
@@ -30,24 +32,37 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{ts,js}": ["eslint --fix", "prettier --write"],
-    "*.{json,md,yml,yaml}": ["prettier --write"]
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "release": {
-    "branches": ["main"],
+    "branches": [
+      "main"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
       "@semantic-release/npm",
       "@semantic-release/github",
-      ["@semantic-release/git", {
-        "assets": ["CHANGELOG.md", "package.json"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]"
-      }]
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]"
+        }
+      ]
     ]
   },
-  "keywords": ["ms", "milliseconds", "time", "duration", "parse", "format", "convert", "tiny", "typescript", "esm", "zero-dependency"],
+  "keywords": "[\"ms\",\"milliseconds\",\"time\",\"duration\",\"parse\",\"format\",\"convert\",\"tinyms\",\"typescript\",\"esm\",\"zero-dependency\"]",
   "author": "Ofer Shapira <ofer@ofershap.dev>",
   "license": "MIT",
   "repository": {
