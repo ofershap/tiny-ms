@@ -5,10 +5,8 @@
 [![CI](https://github.com/ofershap/tiny-ms/actions/workflows/ci.yml/badge.svg)](https://github.com/ofershap/tiny-ms/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bundle size](https://img.shields.io/badge/gzip-833_B-brightgreen)](https://github.com/ofershap/tiny-ms)
-[![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://github.com/ofershap/tiny-ms)
 
-Drop-in replacement for [`ms`](https://github.com/vercel/ms) with native TypeScript, ESM + CJS, compound durations, and strict error handling.
+Parse and format time durations in milliseconds. Like [`ms`](https://github.com/vercel/ms), but with native TypeScript, ESM + CJS, and compound duration support.
 
 ```ts
 import { parse, format } from "ms-tiny";
@@ -18,22 +16,9 @@ parse("1d 3h 30m"); // 99_000_000
 format(3_600_000); // "1h"
 ```
 
-> Zero dependencies. 833 bytes gzipped. Parses `"1h 30m"` out of the box — something `ms` can't do.
+> 833 bytes gzipped. Zero dependencies.
 
 ![Demo](assets/demo.gif)
-
-## Why ms-tiny?
-
-[`ms`](https://github.com/vercel/ms) has 255M weekly downloads but hasn't kept up with the TypeScript-first, ESM ecosystem. It ships without native types, has no ESM exports, silently returns `undefined` on bad input, and can't handle compound durations like `"1h 30m"`.
-
-|               | `ms`                        | `ms-tiny`          |
-| ------------- | --------------------------- | ------------------ |
-| TypeScript    | needs `@types/ms`           | native             |
-| ESM           | no                          | ESM + CJS          |
-| Invalid input | returns `undefined` / `NaN` | throws `TypeError` |
-| Compound      | no                          | `"1h 30m"` works   |
-| Size (gzip)   | ~950B                       | 833B               |
-| Dependencies  | 0                           | 0                  |
 
 ## Install
 
@@ -70,7 +55,7 @@ format(172_800_000, { long: true }); // "2 days"
 
 ### Error handling
 
-Unlike `ms`, invalid input throws a `TypeError` instead of silently returning `undefined`:
+Invalid input throws instead of returning `undefined`:
 
 ```ts
 parse(""); // throws TypeError
@@ -79,28 +64,38 @@ format(NaN); // throws TypeError
 format(Infinity); // throws TypeError
 ```
 
-## API
+## Differences from `ms`
 
-### `parse(value: string): number`
+|               | `ms`        | `ms-tiny`  |
+| ------------- | ----------- | ---------- |
+| TypeScript    | `@types/ms` | built-in   |
+| ESM           | no          | ESM + CJS  |
+| Invalid input | `undefined` | throws     |
+| Compound      | no          | `"1h 30m"` |
+| Size (gzip)   | ~950B       | 833B       |
 
-Parses a duration string and returns milliseconds. Supports single (`"2h"`) and compound (`"1h 30m"`) formats. Throws `TypeError` on invalid input.
-
-### `format(ms: number, options?: { long?: boolean }): string`
-
-Formats milliseconds to a human-readable string. Pass `{ long: true }` for verbose output (`"2 hours"` instead of `"2h"`).
+The API is split into `parse` and `format` instead of a single overloaded function.
 
 ## Migrating from `ms`
 
 ```diff
 - import ms from "ms";
-- const timeout = ms("2h");        // number | undefined
-- const label = ms(60000);          // string
+- const timeout = ms("2h");
+- const label = ms(60000);
 + import { parse, format } from "ms-tiny";
-+ const timeout = parse("2h");      // number (throws on invalid)
-+ const label = format(60000);      // string
++ const timeout = parse("2h");
++ const label = format(60000);
 ```
 
-The API is intentionally split into `parse` and `format` for clarity — no overloaded function signatures.
+## API
+
+### `parse(value: string): number`
+
+Parses a duration string and returns milliseconds.
+
+### `format(ms: number, options?: { long?: boolean }): string`
+
+Formats milliseconds to a readable string. `{ long: true }` gives `"2 hours"` instead of `"2h"`.
 
 ## Author
 
