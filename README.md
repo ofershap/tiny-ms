@@ -20,6 +20,8 @@ format(3_600_000); // "1h"
 
 ![Demo](assets/demo.gif)
 
+<sub>Demo built with <a href="https://github.com/ofershap/remotion-readme-kit">remotion-readme-kit</a></sub>
+
 ## Install
 
 ```bash
