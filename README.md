@@ -112,7 +112,7 @@ Drop-in replacements for sindresorhus async utilities. All ship ESM + CJS with z
 | **tiny-ms**                                            | ms                   | Parse/format durations         |
 | [tiny-escape](https://github.com/ofershap/tiny-escape) | escape-string-regexp | Escape regex chars             |
 
-Want all async utilities in one import? Use [`tiny-async-kit`](https://github.com/ofershap/tiny-async).
+Want all async utilities in one import? Use [`tiny-pasync`](https://github.com/ofershap/tiny-async).
 
 ## Author
 
